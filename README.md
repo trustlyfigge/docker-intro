@@ -54,7 +54,7 @@ wget webserver
 Now we can connect to the server that we started :) 
 
 
-Extra:
+## Extra:
 
 Lets expand on nginx and create our own Docker file, with our own index.html.
 
