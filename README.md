@@ -53,3 +53,26 @@ wget webserver
 
 Now we can connect to the server that we started :) 
 
+
+Extra:
+
+Lets expand on nginx and create our own Docker file, with our own index.html.
+
+
+Steps 
+Select nginx version: 
+[dockerhub nginx](https://hub.docker.com/_/nginx/)
+
+```
+FROM nginx:<tag>
+```
+
+Lets copy over our own index.html (which you have to create)
+
+```
+COPY <host path> <guest path>
+```
+See the [Dockerfile reference](https://docs.docker.com/engine/reference/builder/#copy)
+
+
+That should be it, in our case. 
