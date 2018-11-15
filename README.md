@@ -75,4 +75,18 @@ COPY <host path> <guest path>
 See the [Dockerfile reference](https://docs.docker.com/engine/reference/builder/#copy)
 
 
-That should be it, in our case. 
+Now we need to build the image
+
+```
+docker build -t mynginx .
+```
+
+This will read the docker file and create an image with the name mynginx
+
+```
+docker images #you should be able to find _mynginx_ in the list
+```
+
+What should we do to run this image in our network that we created earlier?
+
+
