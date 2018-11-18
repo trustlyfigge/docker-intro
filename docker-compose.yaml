@@ -1,0 +1,7 @@
+version: '3'
+services:
+  web:
+    image: nginx
+  shell:
+    image: bash
+    command: sleep 1000

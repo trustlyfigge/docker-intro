@@ -51,7 +51,7 @@ docker run --name shell --network www
 wget webserver
 ```
 
-Now we can connect to the server that we started :) 
+Now we can do a wget to the server that we started :) 
 
 
 ## Extra:
@@ -59,7 +59,8 @@ Now we can connect to the server that we started :)
 Lets expand on nginx and create our own Docker file, with our own index.html.
 
 
-Steps 
+### Steps 
+
 Select nginx version: 
 [dockerhub nginx](https://hub.docker.com/_/nginx/)
 
@@ -67,13 +68,11 @@ Select nginx version:
 FROM nginx:<tag>
 ```
 
-Lets copy over our own index.html (which you have to create)
-
+Lets copy over our own index.html (which you'll have to create)
 ```
-COPY <host path> <guest path>
+COPY <host path> /usr/share/nginx/html/index.html
 ```
 See the [Dockerfile reference](https://docs.docker.com/engine/reference/builder/#copy)
-
 
 Now we need to build the image
 
@@ -81,12 +80,55 @@ Now we need to build the image
 docker build -t mynginx .
 ```
 
-This will read the docker file and create an image with the name mynginx
+This will read the docker file and create an image with the repository(name) mynginx and the tag latest
 
 ```
 docker images #you should be able to find _mynginx_ in the list
 ```
 
 What should we do to run this image in our network that we created earlier?
+
+
+# Docker Compose
+
+Docker compose is a tool for defining and running multiple containers.
+
+The common workflow is to create a yaml file called docker-compose.yaml which contains your 
+definition of containers. You can either use containers from docker-hub or another container registry.
+In this tutorial we'll recreate the the steps above.
+
+In the file docker-compose.yaml you can see two definitions, one for nginx and one for bash. The only
+thing that differs is that the bash image has a sleep command. 
+This is because docker needs a process to bind to, in this case sleep. For the nginx image it's the nginx 
+daemon. 
+
+Let's start with starting the images.
+```
+docker-compose up
+```
+
+Open another terminal window and run:
+```
+docker ps
+```
+here we can see the names of the running docker images.
+
+To `log in` to a running container, we can execute the command:
+
+```
+docker exec -it <container name> bash
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
