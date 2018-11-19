@@ -20,7 +20,7 @@ Search for __NetworkSettings.Ports__
 We can kill and remove nginx
 
 ```
-docker rm -f nginx
+docker rm -f webserver
 ```
 
 
@@ -47,7 +47,7 @@ Okay that didn't do much, let's see what happens if we run our container in the 
 
 ```
 docker rm -f shell # remove
-docker run --name shell --network www
+docker run --name shell --network www --it bash
 wget webserver
 ```
 
